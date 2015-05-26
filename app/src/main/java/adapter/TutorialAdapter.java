@@ -29,11 +29,9 @@ public class TutorialAdapter extends PagerAdapter {
         this.images = images;
     }
     public void setGoNextOnClickListener(View.OnClickListener onClickListener){
-
+        this.onClickListener=onClickListener;
     }
-
     @Override
-
     public int getCount() {
         int ret=0;
         if (images != null) {
@@ -60,15 +58,16 @@ public class TutorialAdapter extends PagerAdapter {
         if (position ==images.size()-1) {
             //创建布局，需要增加按钮点击事件
             FrameLayout frameLayout=new FrameLayout(context);
-            ImageView imageVIew=new ImageView(context);
-            imageVIew.setImageResource(images.get(position));
-            frameLayout.addView(imageVIew);
+            ImageView imageView=new ImageView(context);
+            imageView.setImageResource(images.get(position));
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            frameLayout.addView(imageView);
             //设置imageview的排版的宽高：Layoutparams
             //放到哪个容器当中就是用哪一个容器的xxxLayout.layoutparams类
             //宽高匹配父容器
             FrameLayout.LayoutParams lp=new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                     FrameLayout.LayoutParams.MATCH_PARENT);
-            imageVIew.setLayoutParams(lp);
+            imageView.setLayoutParams(lp);
             //添加右下角的按钮，启动主页面
             Button btnGO=new Button(context);
             btnGO.setText("Go");
@@ -85,7 +84,6 @@ public class TutorialAdapter extends PagerAdapter {
         //todo 点击事件
             //采用回调的形式，来避免代码写死业务逻辑
             btnGO.setOnClickListener(onClickListener);
-
             ret=frameLayout;
         }
         else

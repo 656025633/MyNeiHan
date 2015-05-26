@@ -1,9 +1,85 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="fragment.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- 标题部分-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#dcd9cf"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="内涵段子"
+            android:textColor="#000"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+    <!-- 分类部分-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7F7F7"
+        >
+        <!-- 分页下面的指示器-->
+        <View
+            android:id="@+id/home_category_indicator"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:background="#c3bfb0"/>
+        <LinearLayout
+            android:id="@+id/home_category_titles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/home_category_recommend"
+                style="@style/main_home_category_text_style"
+                android:text="推荐"
+                />
+            <TextView
+                android:id="@+id/home_category_video"
+                style="@style/main_home_category_text_style"
+                android:text="视频"
+                />
+            <TextView
+                android:id="@+id/home_category_image"
+                style="@style/main_home_category_text_style"
+                android:text="图片"
+                />
+            <TextView
+                android:id="@+id/home_category_text"
+                style="@style/main_home_category_text_style"
+                android:text="段子"
+                />
+            <TextView
+                android:id="@+id/home_category_friends"
+                style="@style/main_home_category_text_style"
+                android:text="段友圈"
+                />
+        </LinearLayout>
+    </FrameLayout>
+    <!-- ViewPager-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

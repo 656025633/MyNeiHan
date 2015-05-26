@@ -36,7 +36,7 @@
         </activity>
         <!-- 段子详情-->
         <activity
-            android:name=".DetialActivity"
+            android:name=".DetailActivity"
             android:label="@string/title_activity_detial" >
         </activity>
         <!-- 个人中心-->

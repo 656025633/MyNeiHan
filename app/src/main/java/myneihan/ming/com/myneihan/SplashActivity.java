@@ -21,8 +21,6 @@ public class SplashActivity extends ActionBarActivity implements  Runnable{
         setContentView(R.layout.activity_splash);
         Thread thread=new Thread(this);
         thread.start();
-
-
     }
 
     @Override
@@ -42,21 +40,19 @@ public class SplashActivity extends ActionBarActivity implements  Runnable{
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        Boolean aBoolean=sp.getBoolean("SP_KEY_show.tutorial"+versionCode,false);
+        Boolean aBoolean=sp.getBoolean(Constants.SP_KEY_SHOW_TUTORIAL+versionCode,false);
         if(aBoolean){
             //
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
+            finish();
         }
         else
         {
             Intent intent=new Intent(this,TutorialActivity.class);
             startActivity(intent);
+            finish();
         }
-
-        Intent intent=new Intent(this,TutorialActivity.class);
-        startActivity(intent);
-        finish();
     }
 }
 

@@ -40,14 +40,15 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         SharedPreferences sp = getSharedPreferences(Constants.SP_NAME_APP,MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         //todo 根据版本进行存储
-        edit.putBoolean("SP_KEY_show.tutorial"+versionCode,true);
+        edit.putBoolean(Constants.SP_KEY_SHOW_TUTORIAL+versionCode,true);
         edit.commit();
         //viewPager的设置
         ViewPager pager=(ViewPager)findViewById(R.id.tutorial_pager);
         List<Integer> images=new ArrayList<>();
-        for (int i = 0; i <4 ; i++) {
-            images.add(R.mipmap.ic_launcher);
-        }
+        images.add(R.mipmap.bg_intros1);
+        images.add(R.mipmap.bg_intros2);
+        images.add(R.mipmap.bg_intros3);
+        images.add(R.mipmap.bg_intros4);
         TutorialAdapter adapter = new TutorialAdapter(this, images);
         //设置最后一页按钮点击事件
         adapter.setGoNextOnClickListener(this);
