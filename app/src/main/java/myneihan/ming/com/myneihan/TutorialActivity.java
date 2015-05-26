@@ -1,5 +1,6 @@
 package myneihan.ming.com.myneihan;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,13 +9,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import adapter.TutorialAdapter;
 
 /**
  * 引导页activity
  */
-public class TutorialActivity extends ActionBarActivity {
+public class TutorialActivity extends ActionBarActivity implements View.OnClickListener {
 
 
 
@@ -35,12 +40,25 @@ public class TutorialActivity extends ActionBarActivity {
         SharedPreferences sp = getSharedPreferences(Constants.SP_NAME_APP,MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         //todo 根据版本进行存储
-        edit.putBoolean("show.tutorial"+versionCode,true);
+        edit.putBoolean("SP_KEY_show.tutorial"+versionCode,true);
         edit.commit();
         //viewPager的设置
         ViewPager pager=(ViewPager)findViewById(R.id.tutorial_pager);
-        pager.setAdapter(new TutorialAdapter());
+        List<Integer> images=new ArrayList<>();
+        for (int i = 0; i <4 ; i++) {
+            images.add(R.mipmap.ic_launcher);
+        }
+        TutorialAdapter adapter = new TutorialAdapter(this, images);
+        //设置最后一页按钮点击事件
+        adapter.setGoNextOnClickListener(this);
+        pager.setAdapter(adapter);
+    }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 

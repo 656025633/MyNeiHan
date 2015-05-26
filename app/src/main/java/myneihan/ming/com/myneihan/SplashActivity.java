@@ -1,6 +1,10 @@
 package myneihan.ming.com.myneihan;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,8 +32,29 @@ public class SplashActivity extends ActionBarActivity implements  Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Intent intent=new Intent(this,TutorialActivity.class);
+        //获取sharedpreference ，找一下是否系那是过引导教程
+        SharedPreferences sp = getSharedPreferences(Constants.SP_NAME_APP,MODE_PRIVATE);
+        int versionCode=1;
+        PackageManager manager = getPackageManager();
+        try {
+            PackageInfo packageInfo = manager.getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
+            versionCode = packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        Boolean aBoolean=sp.getBoolean("SP_KEY_show.tutorial"+versionCode,false);
+        if(aBoolean){
+            //
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent=new Intent(this,TutorialActivity.class);
+            startActivity(intent);
+        }
 
+        Intent intent=new Intent(this,TutorialActivity.class);
         startActivity(intent);
         finish();
     }
