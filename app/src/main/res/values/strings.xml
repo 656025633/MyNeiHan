@@ -3,4 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_detial">DetialActivity</string>
+    <string name="title_activity_profile_acivity">ProfileAcivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>
