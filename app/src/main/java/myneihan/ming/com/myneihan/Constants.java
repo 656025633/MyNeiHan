@@ -13,4 +13,13 @@ public class Constants {
     //主界面内容列表的参数
     public static final String ARG_CONTENT_LIST_TYPE="CT";
 
+    //网络接口定义的常量
+    //推荐
+    public static final String CONTENT_TYPE_ESSAY__RECOMMEND="-101";
+    //文本类型
+    public static final String CONTENT_TYPE_ESSAY_TEXT="-102";
+    //图片
+    public static final String CONTENT_TYPE_ESSAY_IMAGE="-103";
+    //视频类型
+    public static final String CONTENT_TYPE_ESSAY_VIDEO="-104";
 }

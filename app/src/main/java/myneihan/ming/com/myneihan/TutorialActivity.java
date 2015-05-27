@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,8 +22,6 @@ import adapter.TutorialAdapter;
  */
 public class TutorialActivity extends ActionBarActivity implements View.OnClickListener {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +33,9 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         try {
             PackageInfo packageInfo = manager.getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
             versionCode = packageInfo.versionCode;
+            String versionName=packageInfo.versionName;
+            Log.d("versionnum","++"+versionCode);
+            Log.d("versionnum","++"+versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
