@@ -28,18 +28,21 @@
        <RadioButton
            android:id="@+id/tab_discover"
            style="@style/main_home_button"
+           android:drawableTop="@drawable/selector_discover_button"
            android:text="发现"
            />
        <Button
            android:id="@+id/tab_review"
            android:layout_width="0dp"
            android:layout_height="wrap_content"
+           android:drawableTop="@drawable/selector_audit_button"
            android:layout_weight="1"
            android:text="审核"
            />
        <RadioButton
            android:id="@+id/tab_message"
            style="@style/main_home_button"
+           android:drawableTop="@drawable/selector_msg_button"
            android:text="消息"
            />
    </RadioGroup>

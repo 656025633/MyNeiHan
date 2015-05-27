@@ -13,8 +13,14 @@ import android.widget.ListView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import adapter.ContentListAdapter;
 import client.ClientAPI;
+import model.CommonEssay;
+import model.EssayListData;
+import model.ResponseData;
 import myneihan.ming.com.myneihan.Constants;
 import myneihan.ming.com.myneihan.R;
 
@@ -30,6 +36,11 @@ public class ContentListFragment extends Fragment {
     public static final int TYPE_VIDEO=2;
     public static final int  TYPE_IMAGE=3;
     public static final int  TYPE_TEXT=4;
+    private ContentListAdapter adapter;
+    //用于adapter展现的lsit
+    public List<CommonEssay> essayList;
+    private ListView listView;
+    //
 
     public ContentListFragment() {
         // Required empty public constructor
@@ -45,9 +56,8 @@ public class ContentListFragment extends Fragment {
           type= arguments.getInt(Constants.ARG_CONTENT_LIST_TYPE);
 
         }
-        ListView listView=(ListView)view.findViewById(R.id.content_lsit_view);
-        ContentListAdapter adapter=new ContentListAdapter();
-        listView.setAdapter(adapter);
+        listView = (ListView)view.findViewById(R.id.content_lsit_view);
+        essayList=new ArrayList<>();
         return view;
     }
 
@@ -109,6 +119,32 @@ public class ContentListFragment extends Fragment {
                 try {
                     String message = jsonObject.getString("message");
                      Log.d("neihan","contetn"+message);
+                    ResponseData responseData=new ResponseData();
+                    responseData.parseJSON(jsonObject);
+                    //解析网络回来的数据
+
+                    //TODO 获取数据和更新UI
+                    EssayListData data = responseData.getData();
+                    Log.d("dataaaa",""+data);
+                    if (data != null) {
+                        //获取所有的段子信息
+                        List<CommonEssay> data1 = data.getData();
+
+                        //todo 显示段子列表
+                            if(!data1.isEmpty()){
+                                //把所有数据添加到最开始
+                                for (int i = 0; i <data1.size() ; i++) {
+                                   // Log.d("datacontent", "" + data1.get(i).getContent());
+                                }
+                                essayList.addAll(0,data1);
+                                Log.d("aaaaaaaaaaaaa",data1.get(0).getUser()+"");
+                                //adapter.notifyDataSetChanged();
+                                adapter = new ContentListAdapter(getActivity(),essayList);
+                                //
+                                ContentListFragment.this.listView.setAdapter(adapter);
+
+                        }
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

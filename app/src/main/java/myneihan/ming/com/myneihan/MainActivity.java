@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.RadioGroup;
 import fragment.HomeFragment;
 
@@ -17,14 +18,16 @@ public class MainActivity extends ActionBarActivity implements RadioGroup.OnChec
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         super.onCreate(savedInstanceState);
         //去除标题
-//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        ///requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_main);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        ///
         //
-
         home = new HomeFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();

@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +21,23 @@ public class ResourceInfo {
     //解析部分
     public void parseJSON(JSONObject json){
         //todo 进行变量的解析
+        if (json != null) {
+            width=json.optInt("width");
+            height=json.optInt("height");
+            try {
+                uri=json.getString("uri");
+                JSONArray array=json.getJSONArray("url_list");
+                int len= array.length();
+                urlList=new ArrayList<>();
+                for (int i = 0; i <len ; i++) {
+                    JSONObject jsonObject=array.getJSONObject(i);
+                    String url=jsonObject.getString("url");
+                    urlList.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     ///////////////////////////////////////

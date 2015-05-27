@@ -64,12 +64,12 @@ public class ClientAPI {
             try {
                 String jsonStr=new String(data,"utf-8");
                 ret=new JSONObject(jsonStr);
-            } catch (UnsupportedEncodingException e) {
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
+
         }
         return ret;
     }
