@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -88,6 +89,7 @@ public class ContentListAdapter extends BaseAdapter {
         TextViewHolder holder = (TextViewHolder) ret.getTag();
         if(holder==null){
             holder = new TextViewHolder();
+            //holder
             holder.txtName = (TextView) ret.findViewById(R.id.item_essay_user_name);
             holder.txtContent = (TextView) ret.findViewById(R.id.item_essay_content);
             holder.txtDiggCount = (TextView) ret.findViewById(R.id.item_essay_digg_count);
@@ -114,6 +116,7 @@ public class ContentListAdapter extends BaseAdapter {
         return ret;
     }
     private class TextViewHolder{
+        public ImageView imageHead;
         public TextView txtName;
         public TextView txtContent;
         public TextView txtDiggCount;
