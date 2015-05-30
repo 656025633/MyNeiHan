@@ -17,6 +17,22 @@ public class ResourceInfo {
     private  String uri;
     private List<String> urlList;
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public List<String> getUrlList() {
+        return urlList;
+    }
+
     ////////////////////////////////////////
     //解析部分
     public void parseJSON(JSONObject json){
